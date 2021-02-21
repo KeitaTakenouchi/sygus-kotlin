@@ -1,3 +1,5 @@
+package sygus.antlr
+
 import org.antlr.v4.runtime.tree.TerminalNode
 
 class PrintVisitor : SygusBaseListener() {

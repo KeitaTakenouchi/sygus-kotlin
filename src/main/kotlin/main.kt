@@ -1,6 +1,9 @@
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CommonTokenStream
 import org.antlr.v4.runtime.tree.ParseTreeWalker
+import sygus.antlr.PrintVisitor
+import sygus.antlr.SygusLexer
+import sygus.antlr.SygusParser
 
 fun main() {
     val fileName = "benchmarks/sygus-comp-2017/array_search_3.sl"
