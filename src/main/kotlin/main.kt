@@ -6,7 +6,7 @@ import sygus.antlr.SygusLexer
 import sygus.antlr.SygusParser
 
 fun main() {
-    val fileName = "benchmarks/sygus-comp-2017/array_search_3.sl"
+    val fileName = "benchmarks/sygus-comp-2017/max2.sl"
 
     val charStream = CharStreams.fromFileName(fileName)
     val lexer = SygusLexer(charStream)
