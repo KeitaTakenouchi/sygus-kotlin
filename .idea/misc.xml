@@ -4,12 +4,22 @@
     <option name="perGrammarGenerationSettings">
       <list>
         <PerGrammarGenerationSettings>
-          <option name="fileName" value="*" />
+          <option name="fileName" value="$PROJECT_DIR$/src/main/antlr4/SMTLIBv2.g4" />
           <option name="autoGen" value="true" />
           <option name="outputDir" value="$PROJECT_DIR$/src/main/antlr4" />
           <option name="libDir" value="$PROJECT_DIR$/src/main/antlr4" />
-          <option name="encoding" value="" />
-          <option name="pkg" value="sygus.parser" />
+          <option name="encoding" value="UTF-8" />
+          <option name="pkg" value="sygus.antlr" />
+          <option name="language" value="Java" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/src/main/antlr4/Sygus.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="$PROJECT_DIR$/src/main/antlr4" />
+          <option name="libDir" value="$PROJECT_DIR$/src/main/antlr4" />
+          <option name="encoding" value="UTF-8" />
+          <option name="pkg" value="sygus.antlr" />
           <option name="language" value="Java" />
           <option name="generateVisitor" value="true" />
         </PerGrammarGenerationSettings>
