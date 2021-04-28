@@ -2,7 +2,7 @@ package sygus.antlr
 
 import org.antlr.v4.runtime.tree.TerminalNode
 
-class PrintVisitor : SygusBaseListener() {
+class SyGusPrintVisitor : SygusBaseListener() {
 
     override fun enterNTDef(ctx: SygusParser.NTDefContext?) {
         super.enterNTDef(ctx)
@@ -18,6 +18,12 @@ class PrintVisitor : SygusBaseListener() {
         println()
     }
 
+    override fun visitTerminal(node: TerminalNode?) {
+        print(node!!.text + " ")
+    }
+}
+
+class SMTLIBv2PrintVisitor : SMTLIBv2BaseListener() {
     override fun visitTerminal(node: TerminalNode?) {
         print(node!!.text + " ")
     }
