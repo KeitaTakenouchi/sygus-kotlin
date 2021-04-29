@@ -22,9 +22,3 @@ class SyGusPrintVisitor : SygusBaseListener() {
         print(node!!.text + " ")
     }
 }
-
-class SMTLIBv2PrintVisitor : SMTLIBv2BaseListener() {
-    override fun visitTerminal(node: TerminalNode?) {
-        print(node!!.text + " ")
-    }
-}
