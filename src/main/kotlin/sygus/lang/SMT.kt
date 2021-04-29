@@ -25,7 +25,11 @@ class SMT(val logicName: String? = null) {
         )[0]
 
         // solve to get the evaluated value
-        val s = ctx.mkSolver(logicName)
+        val s = if (logicName != null) {
+            ctx.mkSolver(logicName)
+        } else {
+            ctx.mkSimpleSolver()
+        }
         s.add(assert)
         s.check()
         return s.model.getConstInterp(result).toString()
