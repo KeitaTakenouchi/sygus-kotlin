@@ -9,18 +9,16 @@ import sygus.antlr.SygusParser.*
 typealias RuleName = String
 typealias TypeName = String
 
-class DSL {
+class DSL(synthFunCmdStr: SMTLIB2Str) {
     val types = mutableMapOf<RuleName, TypeName>()
     val produRules = mutableMapOf<RuleName, List<Term>>()
 
-    constructor(synthFunCmdStr: SMTLIB2Str) {
+    init {
         val charStream = CharStreams.fromString(synthFunCmdStr)
         val lexer = SygusLexer(charStream)
-
         val tokenStream = CommonTokenStream(lexer)
         val parser = SygusParser(tokenStream)
         val synthFunCmd = parser.synthFunCmd()
-
         collectNTDefs(synthFunCmd).forEach { ntDef ->
             val name = ntDef.symbol().text
             val type = ntDef.sortExpr().text
@@ -42,7 +40,6 @@ class DSL {
             }
             produRules.put(name, rules)
         }
-
     }
 
     private fun collectNTDefs(synthFunCmd: SynthFunCmdContext): List<NTDefContext> {
