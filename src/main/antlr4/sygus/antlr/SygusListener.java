@@ -448,15 +448,101 @@ public interface SygusListener extends ParseTreeListener {
 	 */
 	void exitSynthFunCmd(SygusParser.SynthFunCmdContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SygusParser#gTerm}.
+	 * Enter a parse tree produced by the {@code SymbolTerm}
+	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 */
-	void enterGTerm(SygusParser.GTermContext ctx);
+	void enterSymbolTerm(SygusParser.SymbolTermContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SygusParser#gTerm}.
+	 * Exit a parse tree produced by the {@code SymbolTerm}
+	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 */
-	void exitGTerm(SygusParser.GTermContext ctx);
+	void exitSymbolTerm(SygusParser.SymbolTermContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code LiteralTerm}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void enterLiteralTerm(SygusParser.LiteralTermContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code LiteralTerm}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void exitLiteralTerm(SygusParser.LiteralTermContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code FuncTerm}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void enterFuncTerm(SygusParser.FuncTermContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FuncTerm}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void exitFuncTerm(SygusParser.FuncTermContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code t1}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void enterT1(SygusParser.T1Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code t1}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void exitT1(SygusParser.T1Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code t2}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void enterT2(SygusParser.T2Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code t2}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void exitT2(SygusParser.T2Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code t3}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void enterT3(SygusParser.T3Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code t3}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void exitT3(SygusParser.T3Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code t4}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void enterT4(SygusParser.T4Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code t4}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void exitT4(SygusParser.T4Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code t5}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void enterT5(SygusParser.T5Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code t5}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 */
+	void exitT5(SygusParser.T5Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link SygusParser#letGTerm}.
 	 * @param ctx the parse tree

@@ -275,11 +275,61 @@ public interface SygusVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSynthFunCmd(SygusParser.SynthFunCmdContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SygusParser#gTerm}.
+	 * Visit a parse tree produced by the {@code SymbolTerm}
+	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitGTerm(SygusParser.GTermContext ctx);
+	T visitSymbolTerm(SygusParser.SymbolTermContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code LiteralTerm}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLiteralTerm(SygusParser.LiteralTermContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code FuncTerm}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFuncTerm(SygusParser.FuncTermContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code t1}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitT1(SygusParser.T1Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code t2}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitT2(SygusParser.T2Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code t3}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitT3(SygusParser.T3Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code t4}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitT4(SygusParser.T4Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code t5}
+	 * labeled alternative in {@link SygusParser#gTerm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitT5(SygusParser.T5Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link SygusParser#letGTerm}.
 	 * @param ctx the parse tree

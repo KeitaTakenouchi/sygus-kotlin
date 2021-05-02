@@ -1,17 +1,13 @@
 // Generated from /home/t-keita/development/sygus/sygus-kotlin/src/main/antlr4/Sygus.g4 by ANTLR 4.9.1
 package sygus.antlr;
-
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.ParserATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
-import org.antlr.v4.runtime.tree.ParseTreeVisitor;
-import org.antlr.v4.runtime.tree.TerminalNode;
-
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
+import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class SygusParser extends Parser {
@@ -2801,36 +2797,168 @@ public class SygusParser extends Parser {
 	}
 
 	public static class GTermContext extends ParserRuleContext {
-		public SymbolContext symbol() {
-			return getRuleContext(SymbolContext.class,0);
-		}
-		public LiteralContext literal() {
-			return getRuleContext(LiteralContext.class,0);
-		}
-		public GTermStarContext gTermStar() {
-			return getRuleContext(GTermStarContext.class,0);
-		}
-		public SortExprContext sortExpr() {
-			return getRuleContext(SortExprContext.class,0);
-		}
-		public LetGTermContext letGTerm() {
-			return getRuleContext(LetGTermContext.class,0);
-		}
 		public GTermContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_gTerm; }
+	 
+		public GTermContext() { }
+		public void copyFrom(GTermContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class T4Context extends GTermContext {
+		public SortExprContext sortExpr() {
+			return getRuleContext(SortExprContext.class,0);
+		}
+		public T4Context(GTermContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterGTerm(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterT4(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitGTerm(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitT4(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitGTerm(this);
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitT4(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class T5Context extends GTermContext {
+		public LetGTermContext letGTerm() {
+			return getRuleContext(LetGTermContext.class,0);
+		}
+		public T5Context(GTermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterT5(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitT5(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitT5(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class LiteralTermContext extends GTermContext {
+		public LiteralContext literal() {
+			return getRuleContext(LiteralContext.class,0);
+		}
+		public LiteralTermContext(GTermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterLiteralTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitLiteralTerm(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitLiteralTerm(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class SymbolTermContext extends GTermContext {
+		public SymbolContext symbol() {
+			return getRuleContext(SymbolContext.class,0);
+		}
+		public SymbolTermContext(GTermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterSymbolTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitSymbolTerm(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitSymbolTerm(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class FuncTermContext extends GTermContext {
+		public SymbolContext symbol() {
+			return getRuleContext(SymbolContext.class,0);
+		}
+		public GTermStarContext gTermStar() {
+			return getRuleContext(GTermStarContext.class,0);
+		}
+		public FuncTermContext(GTermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterFuncTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitFuncTerm(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitFuncTerm(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class T1Context extends GTermContext {
+		public SortExprContext sortExpr() {
+			return getRuleContext(SortExprContext.class,0);
+		}
+		public T1Context(GTermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterT1(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitT1(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitT1(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class T2Context extends GTermContext {
+		public SortExprContext sortExpr() {
+			return getRuleContext(SortExprContext.class,0);
+		}
+		public T2Context(GTermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterT2(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitT2(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitT2(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class T3Context extends GTermContext {
+		public SortExprContext sortExpr() {
+			return getRuleContext(SortExprContext.class,0);
+		}
+		public T3Context(GTermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterT3(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitT3(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitT3(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2843,6 +2971,7 @@ public class SygusParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 			case 1:
+				_localctx = new SymbolTermContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(368);
@@ -2850,6 +2979,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new LiteralTermContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(369);
@@ -2857,6 +2987,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new FuncTermContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(370);
@@ -2870,6 +3001,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 4:
+				_localctx = new T1Context(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(375);
@@ -2883,6 +3015,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 5:
+				_localctx = new T2Context(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(380);
@@ -2896,6 +3029,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 6:
+				_localctx = new T3Context(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(385);
@@ -2909,6 +3043,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 7:
+				_localctx = new T4Context(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
 				setState(390);
@@ -2922,6 +3057,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 8:
+				_localctx = new T5Context(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
 				setState(395);

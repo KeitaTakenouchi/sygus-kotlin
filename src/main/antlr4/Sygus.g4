@@ -173,14 +173,14 @@ synthFunCmd : '(' 'synth-fun' symbol argList sortExpr
             | '(' 'synth-fun' symbol argList sortExpr ')'
             ;
 
-gTerm : symbol
-      | literal
-      | '(' symbol gTermStar ')'
-      | '(' 'Constant' sortExpr ')'
-      | '(' 'Variable' sortExpr ')'
-      | '(' 'InputVariable' sortExpr ')'
-      | '(' 'LocalVariable' sortExpr ')'
-      | letGTerm
+gTerm : symbol                          # SymbolTerm
+      | literal                         # LiteralTerm
+      | '(' symbol gTermStar ')'        # FuncTerm
+      | '(' 'Constant' sortExpr ')'     # t1
+      | '(' 'Variable' sortExpr ')'     # t2
+      | '(' 'InputVariable' sortExpr ')'# t3
+      | '(' 'LocalVariable' sortExpr ')'# t4
+      | letGTerm                        # t5
       ;
 
 letGTerm : '(' 'let' '(' letBindingGTermPlus ')' gTerm ')'

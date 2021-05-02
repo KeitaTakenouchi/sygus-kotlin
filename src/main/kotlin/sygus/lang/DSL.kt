@@ -25,17 +25,16 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
             types.put(name, type)
 
             val rules: List<Term> = collectGTerms(ntDef).map { gTerm ->
-                // TODO: assign rules names in g4 grammar file instead of ad-hoc branches
-                when {
-                    gTerm.gTermStar() != null -> {
+                when (gTerm) {
+                    is FuncTermContext -> {
                         val terms = collectGTerms(gTerm.gTermStar()).map {
                             it.text
                         }.toTypedArray()
                         Term(gTerm.symbol().text, *terms)
                     }
-                    gTerm.symbol() != null -> Term(gTerm.symbol().text)
-                    gTerm.literal() != null -> Term(gTerm.literal().text)
-                    else -> throw IllegalStateException("not supproted: " + gTerm.text)
+                    is SymbolTermContext -> Term(gTerm.symbol().text)
+                    is LiteralTermContext -> Term(gTerm.literal().text)
+                    else -> throw IllegalStateException("not supported: " + gTerm.text)
                 }
             }
             produRules.put(name, rules)
