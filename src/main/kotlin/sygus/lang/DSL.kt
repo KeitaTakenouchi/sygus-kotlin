@@ -22,7 +22,7 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
         collectNTDefs(synthFunCmd).forEach { ntDef ->
             val name = ntDef.symbol().text
             val type = ntDef.sortExpr().text
-            types.put(name, type)
+            types[name] = type
 
             val rules: List<Term> = collectGTerms(ntDef).map { gTerm ->
                 when (gTerm) {
@@ -37,7 +37,7 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
                     else -> throw IllegalStateException("not supported: " + gTerm.text)
                 }
             }
-            produRules.put(name, rules)
+            produRules[name] = rules
         }
     }
 
