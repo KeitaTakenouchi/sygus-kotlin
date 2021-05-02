@@ -11,10 +11,10 @@ class FunctionDef(val name: String, val signature: Signature, val body: ASTNode)
     }
 }
 
-class Signature(val resultType: TypeName, vararg val params: Pair<String, TypeName>) {
+class Signature(val resultType: TypeName, vararg val paramTypes: Pair<String, TypeName>) {
 
     override fun toString(): String {
-        val paramsStr = params.joinToString(separator = " ") {
+        val paramsStr = paramTypes.joinToString(separator = " ") {
             "(${it.first} ${it.second})"
         }
         return "($paramsStr) $resultType"
