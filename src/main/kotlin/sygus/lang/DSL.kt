@@ -87,12 +87,12 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
     }
 }
 
-class Term(val literal: String, vararg val params: String) {
+class Term(val symbol: String, vararg val params: String) {
     override fun toString(): String {
         return if (params.isEmpty())
-            literal
+            symbol
         else
-            "($literal ${params.joinToString(separator = " ")})"
+            "($symbol ${params.joinToString(separator = " ")})"
     }
 
     override fun equals(other: Any?): Boolean {
@@ -101,14 +101,14 @@ class Term(val literal: String, vararg val params: String) {
 
         other as Term
 
-        if (literal != other.literal) return false
+        if (symbol != other.symbol) return false
         if (!params.contentEquals(other.params)) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = literal.hashCode()
+        var result = symbol.hashCode()
         result = 31 * result + params.contentHashCode()
         return result
     }
