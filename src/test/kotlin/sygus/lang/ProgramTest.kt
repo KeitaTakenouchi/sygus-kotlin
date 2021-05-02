@@ -8,23 +8,25 @@ internal class ProgramTest {
 
     @Test
     fun testProgram01() {
-        val body = ASTNode(
-            "ite",
-            ASTNode(">=", ASTNode("x"), ASTNode("y")),
-            ASTNode("true"), ASTNode("false"),
-        )
-        assertEquals("(ite (>= x y) true false)", body.toString())
-
         val funcDef = FunctionDef(
             "isLarger",
             Signature(TypeName.Bool, Pair("x", TypeName.Int), Pair("y", TypeName.Int)),
-            body
+            ASTNode(
+                "ite",
+                ASTNode(">=", ASTNode("x"), ASTNode("y")),
+                ASTNode("true"), ASTNode("false"),
+            )
         )
+        // toString
         val expected = """
             (define-fun isLarger ((x Int) (y Int)) Bool
                 (ite (>= x y) true false)
             )
             """.trimIndent()
         assertEquals(expected, funcDef.toString())
+
+        // invocation
+        assertEquals("true", funcDef.apply("12", "3"))
+        assertEquals("false", funcDef.apply("12", "31"))
     }
 }

@@ -9,7 +9,23 @@ import sygus.antlr.SygusParser.*
 typealias RuleName = String
 
 enum class TypeName {
-    Bool, Int;
+    Bool {
+        override fun isValid(value: String): Boolean {
+            return value == "true" || value == "false"
+        }
+    },
+    Int {
+        override fun isValid(value: String): Boolean {
+            return try {
+                value.toInt()
+                true
+            } catch (e: NumberFormatException) {
+                false
+            }
+        }
+    };
+
+    abstract fun isValid(value: String): Boolean
 
     companion object {
         fun from(string: String): TypeName {

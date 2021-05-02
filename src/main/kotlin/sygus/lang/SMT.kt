@@ -11,6 +11,10 @@ typealias SMTLIB2Str = String
 
 class SMT(val logicName: String? = null) {
 
+    fun evalFuncInvocation(defineFun: FunctionDef, invocation: SMTLIB2Str): String {
+        return evalFuncInvocation(defineFun.toString(), invocation)
+    }
+
     fun evalFuncInvocation(defineFun: SMTLIB2Str, invocation: SMTLIB2Str): String {
         val ctx = Context()
 

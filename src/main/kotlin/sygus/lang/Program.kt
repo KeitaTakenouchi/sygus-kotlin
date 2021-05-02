@@ -1,6 +1,18 @@
 package sygus.lang
 
-class FunctionDef(val name: String, val signature: Signature, val body: ASTNode) {
+class FunctionDef(val name: String, val signature: Signature, val body: ASTNode, val logicName: String? = null) {
+
+    fun apply(vararg args: String): String {
+        // check arguments' type
+        require(args.size == signature.paramTypes.size) { "arguments ${args.joinToString(" ")} are invalid for $signature" }
+        signature.paramTypes.forEachIndexed { i, (_, type) ->
+            require(type.isValid(args[i])) { "invalid value ${args[i]} for type $type" }
+        }
+
+        // evaluation
+        val smtlibStr = "($name " + args.joinToString(separator = " ") + ")"
+        return SMT(logicName).evalFuncInvocation(this, smtlibStr)
+    }
 
     override fun toString(): String {
         return """
@@ -30,6 +42,3 @@ class ASTNode(val symbol: String, vararg val children: ASTNode) {
             "($symbol ${children.joinToString(separator = " ")})"
     }
 }
-
-
-
