@@ -30,7 +30,6 @@ internal class SMTTest {
         }
     }
 
-
     @Test
     fun testEvalFuncInvocation02() {
         val smt = SMT()
@@ -50,7 +49,6 @@ internal class SMTTest {
             assertEquals("true", result)
         }
     }
-
 }
 
 
