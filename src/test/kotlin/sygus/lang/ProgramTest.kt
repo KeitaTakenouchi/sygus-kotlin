@@ -17,7 +17,7 @@ internal class ProgramTest {
 
         val funcDef = FunctionDef(
             "isLarger",
-            Signature("Bool", Pair("x", "Int"), Pair("y", "Int")),
+            Signature(TypeName.Bool, Pair("x", TypeName.Int), Pair("y", TypeName.Int)),
             body
         )
         val expected = """

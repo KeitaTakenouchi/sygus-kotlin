@@ -29,8 +29,8 @@ internal class DSLTest {
         val dsl = DSL(input)
 
         // types
-        assertEquals("Int", dsl.types["Start"])
-        assertEquals("Bool", dsl.types["BoolExpr"])
+        assertEquals(TypeName.Int, dsl.types["Start"])
+        assertEquals(TypeName.Bool, dsl.types["BoolExpr"])
 
         // rules
         assertEquals(

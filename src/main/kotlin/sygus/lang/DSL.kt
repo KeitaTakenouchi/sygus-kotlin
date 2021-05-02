@@ -7,7 +7,20 @@ import sygus.antlr.SygusParser
 import sygus.antlr.SygusParser.*
 
 typealias RuleName = String
-typealias TypeName = String
+
+enum class TypeName {
+    Bool, Int;
+
+    companion object {
+        fun from(string: String): TypeName {
+            return when (string.toLowerCase()) {
+                "bool" -> Bool
+                "int" -> Int
+                else -> throw IllegalStateException("not supported: $string")
+            }
+        }
+    }
+}
 
 class DSL(synthFunCmdStr: SMTLIB2Str) {
     val types = mutableMapOf<RuleName, TypeName>()
@@ -22,7 +35,7 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
         collectNTDefs(synthFunCmd).forEach { ntDef ->
             val name = ntDef.symbol().text
             val type = ntDef.sortExpr().text
-            types[name] = type
+            types[name] = TypeName.from(type)
 
             val rules: List<Term> = collectGTerms(ntDef).map { gTerm ->
                 when (gTerm) {
