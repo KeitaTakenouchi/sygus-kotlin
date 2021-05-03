@@ -1,6 +1,8 @@
 package sygus.synth
 
+import sygus.lang.NotSupportedInSyGuSv2Exception
 import sygus.lang.Term
+import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -57,5 +59,21 @@ internal class SynthProblemTest {
                 Term(">=", "Start", "Start"),
             ), problem.grammar.produRules["BoolExpr"]
         )
+    }
+
+    @Test
+    fun testSynthProblem02() {
+        File("./benchmarks/sygus-comp-2017").walkTopDown()
+            .filter { it.isFile }
+            .forEach {
+                try {
+                    // println(it.name)
+                    SynthProblem(it.readText())
+                } catch (e: NotSupportedInSyGuSv2Exception) {
+                    // e.printStackTrace()
+                } catch (e: StackOverflowError) {
+                    // error("stack over flow")
+                }
+            }
     }
 }
