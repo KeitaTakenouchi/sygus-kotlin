@@ -64,6 +64,9 @@ class SynthProblem(problemStr: SMTLIB2Str) {
                 is CheckSynthCmdContext -> {
                     checkSynth = true
                 }
+                is SetOptsCmdContext -> {
+                    /* ignore solver-specific options */
+                }
                 else -> throw IllegalStateException("not supported command: " + cmd.children[0].text)
             }
         }
