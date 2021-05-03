@@ -79,10 +79,12 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
         val parser = SygusParser(tokenStream)
         val synthFunCmd = parser.synthFunCmd()
         collectNTDefs(synthFunCmd).forEach { ntDef ->
+            // read types
             val name = src(ntDef.symbol())
             val type = src(ntDef.sortExpr())
             types[name] = TypeName.from(type)
 
+            // read production rules
             val rules: List<Term> = collectGTerms(ntDef).map { gTerm ->
                 when (gTerm) {
                     is FuncTermContext -> {
