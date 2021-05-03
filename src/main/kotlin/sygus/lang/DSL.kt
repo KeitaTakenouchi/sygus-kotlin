@@ -10,28 +10,7 @@ import sygus.antlr.SygusParser.*
 
 typealias RuleName = String
 
-enum class TypeName {
-    Bool {
-        override fun isValid(value: String): Boolean {
-            return value == "true" || value == "false"
-        }
-    },
-    Int {
-        override fun isValid(value: String): Boolean {
-            return try {
-                value.toInt()
-                true
-            } catch (e: NumberFormatException) {
-                false
-            }
-        }
-    },
-    BitVec32 {
-        override fun isValid(value: String): Boolean {
-            TODO("Not yet implemented")
-        }
-    };
-
+sealed class TypeName {
     abstract fun isValid(value: String): Boolean
 
     companion object {
@@ -43,18 +22,44 @@ enum class TypeName {
             val sortCtx = parser.sortExpr()
 
             return when (val c = sortCtx) {
-                is BoolSortContext -> Bool
-                is IntSortContext -> Int
+                is BoolSortContext -> BoolT
+                is IntSortContext -> IntT
                 is BitVecSortContext -> {
-                    if (c.intConst().text.equals("32"))
-                        BitVec32
-                    else
-                        throw IllegalStateException("not supported: ${c.text}")
+                    BitVecT(c.intConst().text.toInt())
                 }
                 else -> throw IllegalStateException("not supported: ${c.text}")
             }
         }
     }
+}
+
+object BoolT : TypeName() {
+    override fun isValid(value: String): Boolean {
+        return value == "true" || value == "false"
+    }
+
+    override fun toString() = "Bool"
+}
+
+object IntT : TypeName() {
+    override fun isValid(value: String): Boolean {
+        return try {
+            value.toInt()
+            true
+        } catch (e: NumberFormatException) {
+            false
+        }
+    }
+
+    override fun toString() = "Int"
+}
+
+class BitVecT(val size: Int) : TypeName() {
+    override fun isValid(value: String): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun toString() = "(BitVec $size)"
 }
 
 class NotSupportedInSyGuSv2Exception(message: String) : IllegalStateException(message)

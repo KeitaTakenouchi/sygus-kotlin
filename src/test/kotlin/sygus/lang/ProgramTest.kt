@@ -10,7 +10,7 @@ internal class ProgramTest {
     fun testProgram01() {
         val funcDef = FunctionDef(
             "isLarger",
-            Signature(TypeName.Bool, Pair("x", TypeName.Int), Pair("y", TypeName.Int)),
+            Signature(BoolT, Pair("x", IntT), Pair("y", IntT)),
             ASTNode(
                 "ite",
                 ASTNode(">=", ASTNode("x"), ASTNode("y")),
