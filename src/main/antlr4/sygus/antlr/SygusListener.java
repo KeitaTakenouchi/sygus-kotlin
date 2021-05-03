@@ -484,29 +484,29 @@ public interface SygusListener extends ParseTreeListener {
 	 */
 	void exitFuncTerm(SygusParser.FuncTermContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code t1}
+	 * Enter a parse tree produced by the {@code ConstTerm}
 	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 */
-	void enterT1(SygusParser.T1Context ctx);
+	void enterConstTerm(SygusParser.ConstTermContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code t1}
+	 * Exit a parse tree produced by the {@code ConstTerm}
 	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 */
-	void exitT1(SygusParser.T1Context ctx);
+	void exitConstTerm(SygusParser.ConstTermContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code t2}
+	 * Enter a parse tree produced by the {@code VarTerm}
 	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 */
-	void enterT2(SygusParser.T2Context ctx);
+	void enterVarTerm(SygusParser.VarTermContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code t2}
+	 * Exit a parse tree produced by the {@code VarTerm}
 	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 */
-	void exitT2(SygusParser.T2Context ctx);
+	void exitVarTerm(SygusParser.VarTermContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code t3}
 	 * labeled alternative in {@link SygusParser#gTerm}.

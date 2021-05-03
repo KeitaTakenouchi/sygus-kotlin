@@ -296,19 +296,19 @@ public interface SygusVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFuncTerm(SygusParser.FuncTermContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code t1}
+	 * Visit a parse tree produced by the {@code ConstTerm}
 	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitT1(SygusParser.T1Context ctx);
+	T visitConstTerm(SygusParser.ConstTermContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code t2}
+	 * Visit a parse tree produced by the {@code VarTerm}
 	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitT2(SygusParser.T2Context ctx);
+	T visitVarTerm(SygusParser.VarTermContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code t3}
 	 * labeled alternative in {@link SygusParser#gTerm}.

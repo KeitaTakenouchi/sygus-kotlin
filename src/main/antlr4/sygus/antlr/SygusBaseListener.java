@@ -580,25 +580,25 @@ public class SygusBaseListener implements SygusListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterT1(SygusParser.T1Context ctx) { }
+	@Override public void enterConstTerm(SygusParser.ConstTermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitT1(SygusParser.T1Context ctx) { }
+	@Override public void exitConstTerm(SygusParser.ConstTermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterT2(SygusParser.T2Context ctx) { }
+	@Override public void enterVarTerm(SygusParser.VarTermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitT2(SygusParser.T2Context ctx) { }
+	@Override public void exitVarTerm(SygusParser.VarTermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

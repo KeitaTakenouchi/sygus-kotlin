@@ -2905,41 +2905,41 @@ public class SygusParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class T1Context extends GTermContext {
+	public static class ConstTermContext extends GTermContext {
 		public SortExprContext sortExpr() {
 			return getRuleContext(SortExprContext.class,0);
 		}
-		public T1Context(GTermContext ctx) { copyFrom(ctx); }
+		public ConstTermContext(GTermContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterT1(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterConstTerm(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitT1(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitConstTerm(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitT1(this);
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitConstTerm(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class T2Context extends GTermContext {
+	public static class VarTermContext extends GTermContext {
 		public SortExprContext sortExpr() {
 			return getRuleContext(SortExprContext.class,0);
 		}
-		public T2Context(GTermContext ctx) { copyFrom(ctx); }
+		public VarTermContext(GTermContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterT2(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterVarTerm(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitT2(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitVarTerm(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitT2(this);
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitVarTerm(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3001,7 +3001,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 4:
-				_localctx = new T1Context(_localctx);
+				_localctx = new ConstTermContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(375);
@@ -3015,7 +3015,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 5:
-				_localctx = new T2Context(_localctx);
+				_localctx = new VarTermContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(380);

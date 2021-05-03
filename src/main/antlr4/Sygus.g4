@@ -176,8 +176,8 @@ synthFunCmd : '(' 'synth-fun' symbol argList sortExpr
 gTerm : symbol                          # SymbolTerm
       | literal                         # LiteralTerm
       | '(' symbol gTermStar ')'        # FuncTerm
-      | '(' 'Constant' sortExpr ')'     # t1
-      | '(' 'Variable' sortExpr ')'     # t2
+      | '(' 'Constant' sortExpr ')'     # ConstTerm
+      | '(' 'Variable' sortExpr ')'     # VarTerm
       | '(' 'InputVariable' sortExpr ')'# t3
       | '(' 'LocalVariable' sortExpr ')'# t4
       | letGTerm                        # t5
