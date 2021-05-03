@@ -37,7 +37,7 @@ class SynthProblem(problemStr: SMTLIB2Str) {
         var funcSignature: Signature? = null
         var grammar: DSL? = null
         var checkSynth = false
-        for (cmd in collectCmds(program)) {
+        collectCmds(program).forEach { cmd ->
             when (val c = cmd.children[0] as ParserRuleContext) {
                 /*********************************/
                 /******* synthesis problem *******/
