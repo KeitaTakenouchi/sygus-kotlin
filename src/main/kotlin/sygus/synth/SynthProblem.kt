@@ -100,18 +100,12 @@ class SynthProblem(problemStr: SMTLIB2Str) {
 
     private fun collectSymbolSortPairs(input: SymbolSortPairStarContext): List<SymbolSortPairContext> {
         val ret = mutableListOf<SymbolSortPairContext>()
-
-        // obtain the first rule (always not null)
-        val p = input.symbolSortPair()
-        ret.add(p)
-
         // traverse star rules
-        var tail = input.symbolSortPairStar()
+        var tail = input
         while (tail.symbolSortPair() != null) {
             ret.add(tail.symbolSortPair())
             tail = tail.symbolSortPairStar()
         }
-
         return ret
     }
 }
