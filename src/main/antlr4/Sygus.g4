@@ -180,7 +180,7 @@ gTerm : symbol                          # SymbolTerm
       | '(' 'Variable' sortExpr ')'     # VarTerm
       | '(' 'InputVariable' sortExpr ')'# t3
       | '(' 'LocalVariable' sortExpr ')'# t4
-      | letGTerm                        # t5
+      | letGTerm                        # BinederTerm
       ;
 
 letGTerm : '(' 'let' '(' letBindingGTermPlus ')' gTerm ')'

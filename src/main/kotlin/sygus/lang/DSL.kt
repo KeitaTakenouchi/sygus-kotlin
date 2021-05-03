@@ -57,6 +57,8 @@ enum class TypeName {
     }
 }
 
+class NotSupportedInSyGuSv2Exception(message: String) : IllegalStateException(message)
+
 class DSL(synthFunCmdStr: SMTLIB2Str) {
     val types = mutableMapOf<RuleName, TypeName>()
     val produRules = mutableMapOf<RuleName, List<Term>>()
@@ -88,6 +90,7 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
                     is LiteralTermContext -> Term(src(gTerm.literal()))
                     is ConstTermContext -> ConstTerm(TypeName.from(src(gTerm.sortExpr())))
                     is VarTermContext -> VarTerm(TypeName.from(src(gTerm.sortExpr())))
+                    is BinederTermContext -> throw NotSupportedInSyGuSv2Exception("SyGuSv2 doesn't support: ${src(gTerm)}")
                     else -> throw IllegalStateException("not supported: " + src(gTerm))
                 }
             }

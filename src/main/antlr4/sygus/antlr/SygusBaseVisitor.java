@@ -416,7 +416,7 @@ public class SygusBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements 
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitT5(SygusParser.T5Context ctx) { return visitChildren(ctx); }
+	@Override public T visitBinederTerm(SygusParser.BinederTermContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

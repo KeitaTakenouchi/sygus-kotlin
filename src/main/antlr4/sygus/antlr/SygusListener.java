@@ -606,17 +606,17 @@ public interface SygusListener extends ParseTreeListener {
 	 */
 	void exitT4(SygusParser.T4Context ctx);
 	/**
-	 * Enter a parse tree produced by the {@code t5}
+	 * Enter a parse tree produced by the {@code BinederTerm}
 	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 */
-	void enterT5(SygusParser.T5Context ctx);
+	void enterBinederTerm(SygusParser.BinederTermContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code t5}
+	 * Exit a parse tree produced by the {@code BinederTerm}
 	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 */
-	void exitT5(SygusParser.T5Context ctx);
+	void exitBinederTerm(SygusParser.BinederTermContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SygusParser#letGTerm}.
 	 * @param ctx the parse tree

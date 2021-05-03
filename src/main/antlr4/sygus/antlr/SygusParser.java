@@ -2937,22 +2937,22 @@ public class SygusParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class T5Context extends GTermContext {
+	public static class BinederTermContext extends GTermContext {
 		public LetGTermContext letGTerm() {
 			return getRuleContext(LetGTermContext.class,0);
 		}
-		public T5Context(GTermContext ctx) { copyFrom(ctx); }
+		public BinederTermContext(GTermContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterT5(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterBinederTerm(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitT5(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitBinederTerm(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitT5(this);
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitBinederTerm(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3168,7 +3168,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 8:
-				_localctx = new T5Context(_localctx);
+				_localctx = new BinederTermContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
 				setState(395);

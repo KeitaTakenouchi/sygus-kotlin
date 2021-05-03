@@ -700,13 +700,13 @@ public class SygusBaseListener implements SygusListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterT5(SygusParser.T5Context ctx) { }
+	@Override public void enterBinederTerm(SygusParser.BinederTermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitT5(SygusParser.T5Context ctx) { }
+	@Override public void exitBinederTerm(SygusParser.BinederTermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

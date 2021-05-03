@@ -367,12 +367,12 @@ public interface SygusVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitT4(SygusParser.T4Context ctx);
 	/**
-	 * Visit a parse tree produced by the {@code t5}
+	 * Visit a parse tree produced by the {@code BinederTerm}
 	 * labeled alternative in {@link SygusParser#gTerm}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitT5(SygusParser.T5Context ctx);
+	T visitBinederTerm(SygusParser.BinederTermContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SygusParser#letGTerm}.
 	 * @param ctx the parse tree
