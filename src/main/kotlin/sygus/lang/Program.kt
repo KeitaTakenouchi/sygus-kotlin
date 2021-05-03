@@ -23,7 +23,7 @@ class FunctionDef(val name: String, val signature: Signature, val body: ASTNode,
     }
 }
 
-class Signature(val resultType: TypeName, vararg val paramTypes: Pair<String, TypeName>) {
+class Signature(val resultType: SyGuSType, vararg val paramTypes: Pair<String, SyGuSType>) {
 
     override fun toString(): String {
         val paramsStr = paramTypes.joinToString(separator = " ") {

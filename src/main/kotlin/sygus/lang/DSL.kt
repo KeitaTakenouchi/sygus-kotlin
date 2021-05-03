@@ -10,11 +10,11 @@ import sygus.antlr.SygusParser.*
 
 typealias RuleName = String
 
-sealed class TypeName {
+sealed class SyGuSType {
     abstract fun isValid(value: String): Boolean
 
     companion object {
-        fun from(string: String): TypeName {
+        fun from(string: String): SyGuSType {
             val charStream = CharStreams.fromString(string)
             val lexer = SygusLexer(charStream)
             val tokenStream = CommonTokenStream(lexer)
@@ -24,16 +24,14 @@ sealed class TypeName {
             return when (val c = sortCtx) {
                 is BoolSortContext -> BoolT
                 is IntSortContext -> IntT
-                is BitVecSortContext -> {
-                    BitVecT(c.intConst().text.toInt())
-                }
+                is BitVecSortContext -> BitVecT(c.intConst().text.toInt())
                 else -> throw IllegalStateException("not supported: ${c.text}")
             }
         }
     }
 }
 
-object BoolT : TypeName() {
+object BoolT : SyGuSType() {
     override fun isValid(value: String): Boolean {
         return value == "true" || value == "false"
     }
@@ -41,7 +39,7 @@ object BoolT : TypeName() {
     override fun toString() = "Bool"
 }
 
-object IntT : TypeName() {
+object IntT : SyGuSType() {
     override fun isValid(value: String): Boolean {
         return try {
             value.toInt()
@@ -54,7 +52,7 @@ object IntT : TypeName() {
     override fun toString() = "Int"
 }
 
-class BitVecT(val size: Int) : TypeName() {
+class BitVecT(val size: Int) : SyGuSType() {
     override fun isValid(value: String): Boolean {
         TODO("Not yet implemented")
     }
@@ -65,7 +63,7 @@ class BitVecT(val size: Int) : TypeName() {
 class NotSupportedInSyGuSv2Exception(message: String) : IllegalStateException(message)
 
 class DSL(synthFunCmdStr: SMTLIB2Str) {
-    val types = mutableMapOf<RuleName, TypeName>()
+    val types = mutableMapOf<RuleName, SyGuSType>()
     val produRules = mutableMapOf<RuleName, List<Term>>()
 
     private val charStream = CharStreams.fromString(synthFunCmdStr)
@@ -82,7 +80,7 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
             // read types
             val name = src(ntDef.symbol())
             val type = src(ntDef.sortExpr())
-            types[name] = TypeName.from(type)
+            types[name] = SyGuSType.from(type)
 
             // read production rules
             val rules: List<Term> = collectGTerms(ntDef).map { gTerm ->
@@ -95,8 +93,8 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
                     }
                     is SymbolTermContext -> Term(src(gTerm.symbol()))
                     is LiteralTermContext -> Term(src(gTerm.literal()))
-                    is ConstTermContext -> ConstTerm(TypeName.from(src(gTerm.sortExpr())))
-                    is VarTermContext -> VarTerm(TypeName.from(src(gTerm.sortExpr())))
+                    is ConstTermContext -> ConstTerm(SyGuSType.from(src(gTerm.sortExpr())))
+                    is VarTermContext -> VarTerm(SyGuSType.from(src(gTerm.sortExpr())))
                     is BinederTermContext -> throw NotSupportedInSyGuSv2Exception("SyGuSv2 doesn't support: ${src(gTerm)}")
                     else -> throw IllegalStateException("not supported: " + src(gTerm))
                 }
@@ -177,5 +175,5 @@ open class Term(val symbol: String, vararg val params: String) {
     }
 }
 
-class ConstTerm(val typeName: TypeName) : Term("Const")
-class VarTerm(val typeName: TypeName) : Term("Variable")
+class ConstTerm(val syGuSType: SyGuSType) : Term("Const")
+class VarTerm(val syGuSType: SyGuSType) : Term("Variable")

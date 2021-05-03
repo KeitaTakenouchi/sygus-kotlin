@@ -10,7 +10,7 @@ import sygus.antlr.SygusParser.*
 import sygus.lang.DSL
 import sygus.lang.SMTLIB2Str
 import sygus.lang.Signature
-import sygus.lang.TypeName
+import sygus.lang.SyGuSType
 
 class SynthProblem(problemStr: SMTLIB2Str) {
     val theory: String?
@@ -45,7 +45,7 @@ class SynthProblem(problemStr: SMTLIB2Str) {
                 is SynthFunCmdContext -> {
                     funcName = src(c.symbol())
                     val sortStr = src(c.sortExpr())
-                    funcSignature = Signature(TypeName.from(sortStr), *params(c.argList()))
+                    funcSignature = Signature(SyGuSType.from(sortStr), *params(c.argList()))
                     // restore the original source code
                     grammar = DSL(src(c))
                 }
@@ -92,9 +92,9 @@ class SynthProblem(problemStr: SMTLIB2Str) {
         return ret
     }
 
-    private fun params(args: ArgListContext): Array<Pair<String, TypeName>> {
+    private fun params(args: ArgListContext): Array<Pair<String, SyGuSType>> {
         return collectSymbolSortPairs(args.symbolSortPairStar()).map {
-            Pair(src(it.symbol()), TypeName.from(src(it.sortExpr())))
+            Pair(src(it.symbol()), SyGuSType.from(src(it.sortExpr())))
         }.toTypedArray()
     }
 
