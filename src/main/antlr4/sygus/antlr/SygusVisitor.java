@@ -65,11 +65,54 @@ public interface SygusVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSortDefCmd(SygusParser.SortDefCmdContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SygusParser#sortExpr}.
+	 * Visit a parse tree produced by the {@code BitVecSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSortExpr(SygusParser.SortExprContext ctx);
+	T visitBitVecSort(SygusParser.BitVecSortContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code IntSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIntSort(SygusParser.IntSortContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code BoolSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBoolSort(SygusParser.BoolSortContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code RealSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRealSort(SygusParser.RealSortContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code s1}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitS1(SygusParser.S1Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code s2}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitS2(SygusParser.S2Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code s3}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitS3(SygusParser.S3Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link SygusParser#intConst}.
 	 * @param ctx the parse tree

@@ -25,16 +25,33 @@ enum class TypeName {
                 false
             }
         }
+    },
+    BitVec32 {
+        override fun isValid(value: String): Boolean {
+            TODO("Not yet implemented")
+        }
     };
 
     abstract fun isValid(value: String): Boolean
 
     companion object {
         fun from(string: String): TypeName {
-            return when (string.toLowerCase()) {
-                "bool" -> Bool
-                "int" -> Int
-                else -> throw IllegalStateException("not supported: $string")
+            val charStream = CharStreams.fromString(string)
+            val lexer = SygusLexer(charStream)
+            val tokenStream = CommonTokenStream(lexer)
+            val parser = SygusParser(tokenStream)
+            val sortCtx = parser.sortExpr()
+
+            return when (val c = sortCtx) {
+                is BoolSortContext -> Bool
+                is IntSortContext -> Int
+                is BitVecSortContext -> {
+                    if (c.intConst().text.equals("32"))
+                        BitVec32
+                    else
+                        throw IllegalStateException("not supported: ${c.text}")
+                }
+                else -> throw IllegalStateException("not supported: ${c.text}")
             }
         }
     }
@@ -69,6 +86,8 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
                     }
                     is SymbolTermContext -> Term(src(gTerm.symbol()))
                     is LiteralTermContext -> Term(src(gTerm.literal()))
+                    is ConstTermContext -> ConstTerm(TypeName.from(src(gTerm.sortExpr())))
+                    is VarTermContext -> VarTerm(TypeName.from(src(gTerm.sortExpr())))
                     else -> throw IllegalStateException("not supported: " + src(gTerm))
                 }
             }
@@ -121,7 +140,7 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
     }
 }
 
-class Term(val symbol: String, vararg val params: String) {
+open class Term(val symbol: String, vararg val params: String) {
     override fun toString(): String {
         return if (params.isEmpty())
             symbol
@@ -147,3 +166,6 @@ class Term(val symbol: String, vararg val params: String) {
         return result
     }
 }
+
+class ConstTerm(val typeName: TypeName) : Term("Const")
+class VarTerm(val typeName: TypeName) : Term("Variable")

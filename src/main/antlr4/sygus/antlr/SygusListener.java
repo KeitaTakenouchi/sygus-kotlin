@@ -98,15 +98,89 @@ public interface SygusListener extends ParseTreeListener {
 	 */
 	void exitSortDefCmd(SygusParser.SortDefCmdContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SygusParser#sortExpr}.
+	 * Enter a parse tree produced by the {@code BitVecSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
 	 * @param ctx the parse tree
 	 */
-	void enterSortExpr(SygusParser.SortExprContext ctx);
+	void enterBitVecSort(SygusParser.BitVecSortContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SygusParser#sortExpr}.
+	 * Exit a parse tree produced by the {@code BitVecSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
 	 * @param ctx the parse tree
 	 */
-	void exitSortExpr(SygusParser.SortExprContext ctx);
+	void exitBitVecSort(SygusParser.BitVecSortContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code IntSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIntSort(SygusParser.IntSortContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IntSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIntSort(SygusParser.IntSortContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code BoolSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoolSort(SygusParser.BoolSortContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code BoolSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoolSort(SygusParser.BoolSortContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code RealSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterRealSort(SygusParser.RealSortContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code RealSort}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitRealSort(SygusParser.RealSortContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code s1}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterS1(SygusParser.S1Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code s1}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitS1(SygusParser.S1Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code s2}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterS2(SygusParser.S2Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code s2}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitS2(SygusParser.S2Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code s3}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterS3(SygusParser.S3Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code s3}
+	 * labeled alternative in {@link SygusParser#sortExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitS3(SygusParser.S3Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link SygusParser#intConst}.
 	 * @param ctx the parse tree

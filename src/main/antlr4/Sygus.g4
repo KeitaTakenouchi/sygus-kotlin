@@ -44,13 +44,13 @@ varDeclCmd : '(' 'declare-var' symbol sortExpr ')'
 sortDefCmd : '(' 'define-sort' symbol sortExpr ')'
            ;
 
-sortExpr : '(' 'BitVec' intConst ')'
-         | 'Int'
-         | 'Bool'
-         | 'Real'
-         | '(' 'Enum' eCList ')'
-         | '(' 'Array' sortExpr sortExpr ')'
-         | symbol
+sortExpr : '(' 'BitVec' intConst ')'         # BitVecSort
+         | 'Int'                             # IntSort
+         | 'Bool'                            # BoolSort
+         | 'Real'                            # RealSort
+         | '(' 'Enum' eCList ')'             # s1
+         | '(' 'Array' sortExpr sortExpr ')' # s2
+         | symbol                            # s3
          ;
 
 intConst : INTEGER

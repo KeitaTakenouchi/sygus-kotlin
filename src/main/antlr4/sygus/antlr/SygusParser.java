@@ -717,36 +717,140 @@ public class SygusParser extends Parser {
 	}
 
 	public static class SortExprContext extends ParserRuleContext {
+		public SortExprContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_sortExpr; }
+	 
+		public SortExprContext() { }
+		public void copyFrom(SortExprContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class S3Context extends SortExprContext {
+		public SymbolContext symbol() {
+			return getRuleContext(SymbolContext.class,0);
+		}
+		public S3Context(SortExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterS3(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitS3(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitS3(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class BitVecSortContext extends SortExprContext {
 		public IntConstContext intConst() {
 			return getRuleContext(IntConstContext.class,0);
 		}
+		public BitVecSortContext(SortExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterBitVecSort(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitBitVecSort(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitBitVecSort(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class RealSortContext extends SortExprContext {
+		public RealSortContext(SortExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterRealSort(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitRealSort(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitRealSort(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class IntSortContext extends SortExprContext {
+		public IntSortContext(SortExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterIntSort(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitIntSort(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitIntSort(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class BoolSortContext extends SortExprContext {
+		public BoolSortContext(SortExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterBoolSort(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitBoolSort(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitBoolSort(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class S1Context extends SortExprContext {
 		public ECListContext eCList() {
 			return getRuleContext(ECListContext.class,0);
 		}
+		public S1Context(SortExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterS1(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitS1(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitS1(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class S2Context extends SortExprContext {
 		public List<SortExprContext> sortExpr() {
 			return getRuleContexts(SortExprContext.class);
 		}
 		public SortExprContext sortExpr(int i) {
 			return getRuleContext(SortExprContext.class,i);
 		}
-		public SymbolContext symbol() {
-			return getRuleContext(SymbolContext.class,0);
-		}
-		public SortExprContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_sortExpr; }
+		public S2Context(SortExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterSortExpr(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).enterS2(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitSortExpr(this);
+			if ( listener instanceof SygusListener ) ((SygusListener)listener).exitS2(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitSortExpr(this);
+			if ( visitor instanceof SygusVisitor ) return ((SygusVisitor<? extends T>)visitor).visitS2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -759,6 +863,7 @@ public class SygusParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
+				_localctx = new BitVecSortContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(160);
@@ -772,6 +877,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new IntSortContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(165);
@@ -779,6 +885,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new BoolSortContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(166);
@@ -786,6 +893,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 4:
+				_localctx = new RealSortContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(167);
@@ -793,6 +901,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 5:
+				_localctx = new S1Context(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(168);
@@ -806,6 +915,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 6:
+				_localctx = new S2Context(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(173);
@@ -821,6 +931,7 @@ public class SygusParser extends Parser {
 				}
 				break;
 			case 7:
+				_localctx = new S3Context(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
 				setState(179);
