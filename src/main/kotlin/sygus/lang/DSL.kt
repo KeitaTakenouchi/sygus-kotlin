@@ -2,6 +2,8 @@ package sygus.lang
 
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CommonTokenStream
+import org.antlr.v4.runtime.ParserRuleContext
+import org.antlr.v4.runtime.misc.Interval
 import sygus.antlr.SygusLexer
 import sygus.antlr.SygusParser
 import sygus.antlr.SygusParser.*
@@ -42,28 +44,32 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
     val types = mutableMapOf<RuleName, TypeName>()
     val produRules = mutableMapOf<RuleName, List<Term>>()
 
+    private val charStream = CharStreams.fromString(synthFunCmdStr)
+    private fun src(c: ParserRuleContext): String {
+        return charStream.getText(Interval(c.start.startIndex, c.stop.stopIndex))
+    }
+
     init {
-        val charStream = CharStreams.fromString(synthFunCmdStr)
         val lexer = SygusLexer(charStream)
         val tokenStream = CommonTokenStream(lexer)
         val parser = SygusParser(tokenStream)
         val synthFunCmd = parser.synthFunCmd()
         collectNTDefs(synthFunCmd).forEach { ntDef ->
-            val name = ntDef.symbol().text
-            val type = ntDef.sortExpr().text
+            val name = src(ntDef.symbol())
+            val type = src(ntDef.sortExpr())
             types[name] = TypeName.from(type)
 
             val rules: List<Term> = collectGTerms(ntDef).map { gTerm ->
                 when (gTerm) {
                     is FuncTermContext -> {
                         val terms = collectGTerms(gTerm.gTermStar()).map {
-                            it.text
+                            src(it)
                         }.toTypedArray()
-                        Term(gTerm.symbol().text, *terms)
+                        Term(src(gTerm.symbol()), *terms)
                     }
-                    is SymbolTermContext -> Term(gTerm.symbol().text)
-                    is LiteralTermContext -> Term(gTerm.literal().text)
-                    else -> throw IllegalStateException("not supported: " + gTerm.text)
+                    is SymbolTermContext -> Term(src(gTerm.symbol()))
+                    is LiteralTermContext -> Term(src(gTerm.literal()))
+                    else -> throw IllegalStateException("not supported: " + src(gTerm))
                 }
             }
             produRules[name] = rules

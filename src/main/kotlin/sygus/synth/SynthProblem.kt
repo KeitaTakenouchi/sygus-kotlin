@@ -21,8 +21,12 @@ class SynthProblem(problemStr: SMTLIB2Str) {
 
     val constraints = mutableListOf<String>()
 
+    private val charStream = CharStreams.fromString(problemStr)
+    private fun src(c: ParserRuleContext): String {
+        return charStream.getText(Interval(c.start.startIndex, c.stop.stopIndex))
+    }
+
     init {
-        val charStream = CharStreams.fromString(problemStr)
         val lexer = SygusLexer(charStream)
         val tokenStream = CommonTokenStream(lexer)
         val parser = SygusParser(tokenStream)
@@ -39,11 +43,11 @@ class SynthProblem(problemStr: SMTLIB2Str) {
                 /******* synthesis problem *******/
                 /*********************************/
                 is SynthFunCmdContext -> {
-                    funcName = c.symbol().text
-                    funcSignature = Signature(TypeName.from(c.sortExpr().text), *params(c.argList()))
+                    funcName = src(c.symbol())
+                    val sortStr = src(c.sortExpr())
+                    funcSignature = Signature(TypeName.from(sortStr), *params(c.argList()))
                     // restore the original source code
-                    val str = charStream.getText(Interval(c.start.startIndex, c.stop.stopIndex))
-                    grammar = DSL(str)
+                    grammar = DSL(src(c))
                 }
                 /******************************************/
                 /**** constraints given to SMT solver *****/
@@ -52,8 +56,7 @@ class SynthProblem(problemStr: SMTLIB2Str) {
                 is VarDeclCmdContext,
                 is ConstraintCmdContext -> {
                     // restore the original source code
-                    val str = charStream.getText(Interval(c.start.startIndex, c.stop.stopIndex))
-                    this.constraints.add(str)
+                    this.constraints.add(src(c))
                 }
                 /************************/
                 /**** (check-synth) *****/
@@ -66,7 +69,7 @@ class SynthProblem(problemStr: SMTLIB2Str) {
         }
         if (!checkSynth)
             throw IllegalStateException("check-synth command not found")
-        
+
         this.funcName = funcName!!
         this.funcSignature = funcSignature!!
         this.grammar = grammar!!
@@ -91,7 +94,7 @@ class SynthProblem(problemStr: SMTLIB2Str) {
 
     private fun params(args: ArgListContext): Array<Pair<String, TypeName>> {
         return collectSymbolSortPairs(args.symbolSortPairStar()).map {
-            Pair(it.symbol().text, TypeName.from(it.sortExpr().text))
+            Pair(src(it.symbol()), TypeName.from(src(it.sortExpr())))
         }.toTypedArray()
     }
 
