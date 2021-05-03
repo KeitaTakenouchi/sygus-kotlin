@@ -60,7 +60,8 @@ class BitVecT(val size: Int) : SyGuSType() {
     override fun toString() = "(BitVec $size)"
 }
 
-class NotSupportedInSyGuSv2Exception(message: String) : IllegalStateException(message)
+class NotSupportedInSyGuSv2Exception(unsupportedExpression: String) :
+    IllegalStateException("SyGuSv2 doesn't support: $unsupportedExpression")
 
 class DSL(synthFunCmdStr: SMTLIB2Str) {
     val types = mutableMapOf<RuleName, SyGuSType>()
@@ -95,7 +96,7 @@ class DSL(synthFunCmdStr: SMTLIB2Str) {
                     is LiteralTermContext -> Term(src(gTerm.literal()))
                     is ConstTermContext -> ConstTerm(SyGuSType.from(src(gTerm.sortExpr())))
                     is VarTermContext -> VarTerm(SyGuSType.from(src(gTerm.sortExpr())))
-                    is BinederTermContext -> throw NotSupportedInSyGuSv2Exception("SyGuSv2 doesn't support: ${src(gTerm)}")
+                    is BinederTermContext -> throw NotSupportedInSyGuSv2Exception(src(gTerm))
                     else -> throw IllegalStateException("not supported: " + src(gTerm))
                 }
             }
@@ -175,5 +176,5 @@ open class Term(val symbol: String, vararg val params: String) {
     }
 }
 
-class ConstTerm(val syGuSType: SyGuSType) : Term("Const")
-class VarTerm(val syGuSType: SyGuSType) : Term("Variable")
+class ConstTerm(val type: SyGuSType) : Term("Const")
+class VarTerm(val type: SyGuSType) : Term("Variable")
